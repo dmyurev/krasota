@@ -33,7 +33,11 @@ namespace WpfApp1
         }
         private void BtnEditData_Click(object sender, RoutedEventArgs e)
         {
-
+            Button BtnEdit = sender as Button;
+            var currentClient = BtnEdit.DataContext as Client;
+            var EdiWindow = new AddClientWindow(context, currentClient);
+            EdiWindow.ShowDialog();
+            ShowTable();
         }
 
 
@@ -61,6 +65,34 @@ namespace WpfApp1
             context.Client.Add(NewClient);
             var AddClientWindow = new AddClientWindow(context, NewClient);
             AddClientWindow.ShowDialog();
+        }
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                //krasotaEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                //ClientWindow.ItemsSource = krasotaEntities.GetContext().Client.ToList();
+            }
+        }
+        public void ShowLetters()
+        {
+            //for (char i = 'А'; i <= 'Я'; i++)
+            //{
+            //    TextBlock letter = new TextBlock
+            //    {
+            //        Text = i.ToString(),
+            //        FontWeight = FontWeights.Bold,
+            //        Foreground = Brushes.White,
+            //        Margin = new Thickness(10, 0, 0, 0)
+            //    };
+            //    letter.MouseLeftButtonDown += TextBlock_MouseLeftButtonDown;
+            //    StackLetters.Children.Add(letter);
+            //}
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }

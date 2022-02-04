@@ -30,32 +30,34 @@ namespace WpfApp1
 
         private void BtnAuth_Click(object sender, RoutedEventArgs e)
         {
-            //var user = context.Client.FirstOrDefault(u => (u.Email == Login.Text || u.Phone == Login.Text) && u.LastName == Password.Password);
-            //if (user == null)
-            //{
-            //    MessageBox.Show("Неверные данные");
-            //    return;
-            //}
-            //else
-            //{
-            //    if (user.ID == 1)
-            //    {
-            //        MessageBox.Show("Hello");
-            //        var admin = new Table();
-            //        admin.Show();
-            //        this.Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Hello");
-            //        var tables = new Table();
-            //        tables.Show();
-            //        this.Close();
-            //    }
-            //}
+            var user = context.Client.FirstOrDefault(u => ("1" == Login.Text || "1" == Password.Text));
+            if (user == null)
+            {
+                MessageBox.Show("Неверные данные");
+                return;
+            }
+            else
+            {
+                if (user.ID == 1)
+                {
+                    MessageBox.Show("Привет");
+                    var admin = new MainWindow();
+                    admin.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Привет");
+                    var tables = new MainWindow();
+                    tables.Show();
+                    this.Close();
+                }
+            }
         }
+    
 
-        private void Login_TextChanged(object sender, TextChangedEventArgs e)
+
+private void Login_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
